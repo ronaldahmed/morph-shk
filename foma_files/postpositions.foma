@@ -1,0 +1,9 @@
+## Postpositional phrases
+
+
+define adv2adp [adv=roots loc=loc=suff];
+
+
+define postpositions [ ["[ADP] " : 0] 
+					   [ [postpos=roots | adv2adp] (abs=suff) (sec=pos=clitics) ]
+];

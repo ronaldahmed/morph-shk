@@ -1,0 +1,101 @@
+## Common prefixes in most POS
+
+
+define pron=nmlzer [" a[+Nmlz]" : {a}];
+define gen=suff [" n[+Gen]" : {n}];
+define intrss=suff [" on[+Intrss]" : {on}];
+
+# cases
+
+define abs=suff  [" a[+Abs]" : {a} ];
+define erg=suff  [" n[+Erg]" : {n} ];
+define loc=loc=suff [" ain[+Loc] nko[+Loc]" : {ainko}];
+define abl=suff [ " a[+Abl]" : {a} ];
+
+#  ergative allomorphs
+define n=erg [ [ " n[+Erg]" : {kan} ]
+             | [ " n[+Erg]" : {ten} ]
+             | [ " n[+Erg]" : {tan} ]
+             | [ " n[+Erg]" : {nin} ]
+             | [ " n[+Erg]" : {ton} ]
+             | [ " n[+Erg]" : {tonin} ]
+             | [ " n[+Erg]" : {man} ]
+             | [ " n[+Erg]" : "^ERG" ]
+            ];
+
+# interrogative suffixes
+
+define int1=suff [ " ki[+Int]" : {ki} ];
+define int2=suff [ " rin[+Int2]" : {rin} ];
+define int=emphatic [" shaman[+Intens]" : {shaman}];
+define spec=clitic [ " mein[+Dub]": {mein} ];
+define instr=suff [ " n[+Inst]" : {n} ];
+
+
+# S-A-O agreement
+
+define s=agr=suff [ " x[+S]" : {x} ];
+define o=agr=suff [" o[+O]" : {o} ];
+define a=agr=suff [ " xon[+A]" : {xon} ];
+
+
+# Auxiliary verbs as suffixes (verbalizers)
+
+define aux=trans=suff [ " ak[+Aux]" : {ak} ];
+
+# tenses
+
+define indef=fut=pv [ " nonx[+Fut]" : {nonx}];
+
+# clitics
+
+define intens=verymuch [ " yora[+Intens]" : {yora} ];
+define evidential=clit [ " ra[+Ev]" : {ra} ];
+define hsy1=clit [ " ronki[+Hsy]" : {ronki} ];
+define contrastive=clit [ " kaya[+Contrst]" : {kaya} ];
+
+
+
+
+# adverbial/manner suffixes
+define temporal    [ " tian[+Temp]" : {tian} ];
+define chezative   [ " iba[+Chez]" : {iba} ];
+define dem=loc=ki  [ " ki[+Loc]" : {ki} ];
+define dem=loc=o   [ " o[+Loc]" : {o} ];
+define dem=loc=no  [ " no[+Loc]" : {no} ];
+define dem=loc=ri  [ " ri[+Loc]" : {ri} ];
+define dem=loc=ke  [ " ke[+Loc]" : {ke} ];
+define dem=loc=a   [ " a[+All]" : {a} ];
+define dem=loc=ska [ " ská[+Loc]" : {ská} ];
+
+define loc=alone [ dem=loc=ki
+				 | dem=loc=o
+				 | dem=loc=no
+				 | dem=loc=ri
+				 | dem=loc=ska
+				 ];
+
+## NOUNS / ADJ
+define n=plural [ " bo[+Pl]" : {bo} ];
+
+# (non) adjectivizers 
+
+#  propietive vs privative, e.g. mine vs not mine
+## privative suffix on shortened body-parts. only suffix implemented, no roots documented
+## could work with "root[NRoot]" tag
+define prop=priv [ [ " ya[+Prop]" : {ya} ]
+                 | [ " oma[+Priv]" : {oma} ]
+                 | [ " nto[+Priv]" : {nto} ]
+                 ];
+# emphasis
+define emp=suff [ " bi[+Em]" : {bi} ];
+
+# diminutive vs deprecatory, e.g. small vs big
+define dim=depr    [ [ " shoko[+Dim]" : {shoko} ]
+                   | [ " isi[+Deprec]" : "^DEP" ]
+                   ];
+
+
+
+
+source clitics.foma

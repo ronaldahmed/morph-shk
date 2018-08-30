@@ -1,0 +1,135 @@
+
+####################################################################################
+
+                                    ##########
+                                    #        #
+                                    # NOUNS  #
+                                    #        #
+                                    ##########
+
+
+#################################################################################### 
+
+
+    # can be added to any verb
+    define vnmlzer [ " ti[+Nmlz]" : {ti} ];
+
+    # nominalized verbs
+    #define nominalized [ [ verb=complete vnmlzer ]
+    define nominalized [ [ Pref^{0,3} [VRootTrans | VRootIntrans] [participial | vnmlzer] ]
+                       | adj=roots
+                       | [ "keen[VRoot:Nmlz]" : {keen} ]
+                       | [ "mawá[VRoot:Nmlz]" : {mawá} ]
+                       | [ "mawá[VRoot:Nmlz]" : {mawát} ]
+                       | [ "shinan[VRoot:Nmlz]" : {shinan} ]
+                       ];
+
+    # n=plural in common.foma
+
+    define n=pl=erg [ " bo[+Pl] n[+Erg]" : {baon} ];
+
+
+    define distributive [ [ " tiibi[+Distr]" : {tiibi}]
+                        | [ " tiibi[+Distr]" : {tibi}]
+                         ];
+
+    
+        ### CHANGES TO ADJ or MOD
+
+
+    define legitimate [ [ " kon[+good.easy]" : {kon} ]
+                      | [ " koma[+bad.hard]" : {koma} ]
+                      ];
+
+    # vocative detection included in root dump from lexicon
+
+    # n-form : genitive [ defined in pronouns section ]
+
+    # interesive (slightly different from that of pronouns)
+    define n=interessive [ " n[+Intrss]" : "^INT" ];
+
+    # locative | allative
+    define loc=allve [ [ " n[+All]" : {n} ]
+                     | [ " n[+All]" : {no} ]
+                     | [ " nko[+All]" : {nko} ]
+                     | [ " ain[+All]" : {ain} ]
+                     ];
+
+    define loc=allve=nmlzed [ [ " ain[+All]" : {ain} ]
+                            | [ " ain[+All]" : {ainko} ]
+                            ];
+
+    # ablative case, present always with locative
+    define loc=abl [ [[ [ " nko[+Loc] ni[+Lig]" : {nkoni} ]
+                      | [ " ain[+Loc] no[+Loc]" : {aino} ]
+                      | [ " ain[+Loc] nko[+Loc] ni[+Lig]" : {ainkoni} ]
+                      ] abl=suff ]
+                    | [ " me[+Loc] a[+Abl]" : {mea} ]
+                    | [ " ke[+Loc] a[+Abl]" : "^LA" ]
+                   ];
+
+    define ablative [ [ " nko[+Loc] ni[+Lig] a[+Abl]" : {nkonia} ]
+                    | [ " me[+Loc] a[+Abl]" : {mea} ]
+                    | [ " ke[+Loc] a[+Abl]" : "^LA" ]
+                    | [ " ain[+Loc] no[+Loc] a[+Abl]" : {ainoa} ]
+                    | [ " ain[+Loc] nko[+Loc] ni[+Lig] a[+Abl]" : {ainkonia} ]
+                    ];
+
+
+    define dative [ " ki[+Dat]" : {ki} ];
+
+
+    # temporal & chezative sourced in common.foma
+    
+
+    ## combining
+
+    #    loc.all + abl + s-agree
+    define l=a=s [ loc=allve
+                 | [ ablative (s=agr=suff) ]
+                 ];
+
+    define l=a=s=nmlz [ loc=allve=nmlzed
+                      | [ ablative (s=agr=suff) ]
+                      ];
+
+    define noun=suff [ n=plural
+                     | n=erg
+                     | n=pl=erg
+                     | distributive
+                     | dim=depr
+                     | legitimate
+                     | gen=suff
+                     | n=interessive
+                     | dative
+                     | chezative
+                     | temporal
+                     | prop=priv
+                     | emp=suff
+                     | loc=alone
+                     ];
+
+    # rep. limit is # of total suffixes, giving one possible slot for each one
+    # evidential clitic defined in clitcs.foma, imported in common.foma
+
+    # gather interrogative suffixes for nouns
+    define int=nouns [ int=emphatic | int1=suff | int2=suff ];
+
+    # reorientation of focus to affixed noun phrase (morph label not given)
+    define focus=kan [" kan[+kan]" : {kan}];
+
+
+    define nouns [ ["[NOUN] " : 0] 
+                   [[ nominalized [noun=suff | l=a=s=nmlz]^{0,12} ] |
+                    [ (Pref) NRoot [noun=suff | l=a=s]^{0,12} ] ]
+                    (adv=suff) [evidential=clit | hsy1=clit | int=nouns]^{0,3} (focus=kan)
+                ]
+                 .o. dep=allm .o. int=allm .o. loc=abl=allm .o. erg=allm;
+
+
+    
+    define proper=nouns [ ["[PROPN] " : 0]
+                          [ propn=root [noun=suff | l=a=s]^{0,12}
+                          (adv=suff) [evidential=clit | hsy1=clit | int=nouns]^{0,3} (focus=kan)]
+                        ]
+                        .o. dep=allm .o. int=allm .o. loc=abl=allm .o. erg=allm;

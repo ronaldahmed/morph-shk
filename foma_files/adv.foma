@@ -1,0 +1,68 @@
+
+####################################################################################
+
+                                    ###########
+                                    #         #
+                                    # ADVERBS #
+                                    #         #
+                                    ###########
+
+#################################################################################### 
+
+
+# Time-Location-Manner Demonstratives -> UD adverb
+
+# dem=loc=* defined at common
+
+define tlm=prox [ [ dem=prox2
+				   [ dem=loc=no
+				   | dem=loc=o
+				   | dem=loc=ri
+				   | [dem=loc=ke (dem=loc=a)]
+				   | dem=loc=ska
+				   ] ]
+				| [ dem=prox
+				   [ dem=loc=ska
+				   | [ " tío[+Loc]" : {tío} ]
+				   ]
+				  ]
+				];
+
+define tlm=med [ dem=med
+				   [ dem=loc=ska
+				   | dem=loc=ki
+				   ]
+				];
+
+define tlm=dist [ [ dem=dist2
+				   [ dem=loc=no
+				   | dem=loc=ri
+				   | [dem=loc=ke (dem=loc=a)]
+				   ] ]
+				| [ dem=prox dem=loc=ki ]
+				];
+
+define adv=dem [ tlm=prox | tlm=med | tlm=dist ];
+
+
+# ADJ -> ADV
+
+define adj2adv=suff [ " n[+Advz]" : {n} ];
+
+define s=advagr=suff [ [" i[+S]" : {i}]
+					 | [" ax[+S]" : {ax}]
+];
+
+define adv=agr [s=advagr=suff | a=agr=suff];
+
+# a agr same as pron
+
+define adverbs [ [ "[ADV] " : 0]
+				 [ adv=roots
+				 | adv=dem
+				 | [ adj=roots adj2adv ]
+				 | [ [NRoot | num=quant] dem=loc=ki ]
+				 ]
+				 (adv=agr) (temporal) ([evidential=clit | adv=suff])
+			   ];
+

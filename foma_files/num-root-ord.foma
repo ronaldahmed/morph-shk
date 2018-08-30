@@ -1,0 +1,6 @@
+# Ordinal numbers
+
+define NumRootOrd [
+	  [ "reken[NUMRoot.O]" :  {reken} ]
+	| [ "chiní[NUMRoot.O]" :  {chiní} ]
+];

@@ -1,0 +1,279 @@
+# set char-encoding utf-8
+# -*- encoding: utf-8 -*-
+
+
+
+############################################################################### 
+
+    #########################
+    #                       #
+    # PHONETIC VARIATIONS   #
+    #                       #
+    #########################
+
+    # 4 SK vowels + rest for Spanish compatibility
+    define Vowels [a|e|i|o|u|á|é|í|ó|ú|A|E|I|O|U|Á|É|Í|Ó|Ú];
+
+    # 15 SK consonants + rest for Spanish compatibility
+    define Cons [b|c|d|f|g|h|j|k|l|m|n|ñ|p|q|r|s|t|v|w|y|z|[{sh}]|[{ch}]|[{ts}]];
+
+    # only 3 consonants (4 phonemes, 3 realizations) can become coda
+    define ConsCoda [n|s|{sh}];
+
+    #--------------------------#
+    # allow uppercase letters  #
+    #--------------------------#
+
+    define LowerCase [A (->) a, B (->) b, C (->) c,D (->) d,E (->) e,F (->) f,G (->) g,H (->) h,I (->) i,J (->) j,K (->) k,L (->) l,M (->) m,N (->) n,O (->) o,P (->) p,Q (->) q,R (->) r,S (->) s,T (->) t,U (->) u,V (->) v,W (->) w,X (->) x,Y (->) y,Z (->) z,Ñ (->) ñ, Á (->) á, É (->) é, Í (->) í, Ó (->) ó, Ú (->) ú ];
+
+    define UpperCase [ a (->) A,b (->) B,c (->) C,d (->) D,e (->) E,f (->) F,g (->) G,h (->) H,i (->) I,j (->) J,k (->) K,l (->) L,m (->) M,n (->) N,o (->) O,p (->) P,q (->) Q,r (->) R,s (->) S,t (->) T,u (->) U,v (->) V,w (->) W,x (->) X,y (->) Y,z (->) Z,ñ (->) Ñ, á (->) Á, é (->) É, í (->) Í, ó (->) Ó, ú (->) Ú ];
+
+   
+    #-------------------------------------------------#
+    # Orthography of Spanish loan words:              #
+    #                                                 #
+    #- may be written with or without their accents   #
+    #- e may be written as i, o as u in Spanish words #
+    #-------------------------------------------------#
+    define AccentES [ á (->) a,é (->) [e|i],í (->) i, ó (->) [o|u],ú (->) u, ü (->) u, Á (->) A, É (->) E, Í (->) I, Ó (->) O, Ú (->) U];
+    define AccentES2 [ a (->) á,e (->) é, i (->) í,o (->) ó, u (->) ú, u (->) ü ];
+    
+    define SpanOrtho AccentES .o. AccentES2;
+
+
+####################################################################################
+
+    ##########
+    #        #
+    # ROOTS  #
+    #        #
+    ##########
+
+    ## NOUNS
+
+    # Spanish roots
+    source nroot-es.foma
+
+    source NP.foma
+
+    source nroot.foma
+
+    ## VERBS
+
+    source vroot-trans.foma
+
+    source vroot-intrans.foma
+    
+    source vroot-disyllabic.foma
+
+    ## POSTPOSITIONS
+
+    source postp-roots.foma
+
+    ## ADJECTIVES
+
+    source adj-root.foma
+
+    ## NUMERALS
+    
+    source num-root-card.foma
+
+    ## ADVERBS
+
+    source adv-root.foma
+
+    ## CONJUNCTIONS (C & S)
+    # roots defined in develop file
+
+    ## INTERJECTIONS
+    source interj-root.foma
+
+    ## PARTICLES (ONOMATOPIES)
+    source part-root.foma
+
+    ## COMMON SUFFIXES
+    source common.foma
+
+    ## ALLOMORPHS: rules for allomorph realization
+    source n-allomorphs.foma
+
+    source v-allomorphs.foma
+
+    
+####################################################################################
+
+    ##########
+    #        #
+    # VERB   #
+    #        #
+    ##########
+
+    source verbs.foma
+
+
+####################################################################################
+
+    ##########
+    #        #
+    # AUX    #
+    #        #
+    ##########
+
+    source aux.foma
+
+
+######################################################################################
+     
+    ######################
+    #                    #
+    # LOAN WORDS         #
+    #                    #
+    ######################
+
+    define NRootES [NRootESraw] .o. SpanOrtho .o. UpperCase .o. LowerCase;
+
+    define loan=words [ ["[NOUN] " : 0] NRootES ];
+
+
+
+####################################################################################
+
+    ##########
+    #        #
+    # NOUNS  #
+    #        #
+    ##########
+
+    source nouns.foma
+
+
+ ######################################################################################
+     
+    ######################
+    #                    #n
+    # PRONOUNS           #
+    #                    #
+    ######################
+
+    source pronouns.foma
+
+ ######################################################################################
+     
+    ######################
+    #                    #
+    # INT / DET          #
+    #                    #
+    ######################
+    source det-wh.foma
+
+ ######################################################################################
+     
+    ######################
+    #                    
+    # POSTPOSITIONAL PHRASES           
+    #                    
+    ######################
+
+    source postpositions.foma
+
+####################################################################################
+
+    ##############
+    #            #
+    # ADJECTIVES #
+    #            #
+    ##############
+
+    source adj.foma
+
+#########################################################################
+
+       
+    ###########
+    #         #
+    # NUMERALS #
+    #         #
+    ###########
+
+
+    source numerals.foma
+
+
+####################################################################################
+
+    ##############
+    #            #
+    # ADVERBS #
+    #            #
+    ##############
+
+    source adv.foma
+
+####################################################################################
+
+    ################
+    #              #
+    # CONJUNCTIONS #
+    #              #
+    ################
+
+    source conj.foma
+
+####################################################################################
+
+    ################
+    #              #
+    # INTERJECTIONS #
+    #              #
+    ################
+
+    define interjections  [ ["[INTJ] " : 0] intj=roots ];
+
+
+####################################################################################
+
+    ################
+    #              #
+    # PARTICLES    #
+    #              #
+    ################
+
+    define particles  [ ["[PART] " : 0] part=roots ];
+
+
+
+#########################################################################
+
+    #-------------#
+    # Punctuation #
+    #-------------#
+
+    source punctuation.foma
+
+
+
+############################################################################### 
+
+
+regex [
+      verb=complete
+      | auxiliar
+      | interjections
+      | nouns
+      | proper=nouns
+      | pronouns
+      | interrogatives
+      | determiners
+      | postpositions
+      | numerals
+      | adjectives
+      | adverbs
+      | cconj
+      | sconj
+      | particles
+      | Punctuation
+      | loan=words
+      ]
+      ;
+
+save stack analyser_sk.fst

@@ -1,0 +1,73 @@
+### POS 16 : Final
+	
+	## Same subject
+
+	# Finite final suffixes
+    define declarative [ [ " ai[+Inc]" : {ai} ]
+                       | [ " ke[+Cmpl]" : {ke} ]
+                       | [ " kato[+Cmpl]" : {kato} ]
+                       ];
+    define prosp=jussive [ [ " we[+Imp]" : {we}]
+    				     | [ " ba[+P/J] non[+P/J]" : {banon}]
+    				     | [ " non[+P/J]" : {non} ]
+    				     ];
+
+
+    define ss=finite [declarative | prosp=jussive];
+
+
+    # Non=finite final suffixes
+    define participial [ [ " ai[+Inc]"  : {ai} ]
+    				   | [ " a[+Cmpl]" : {a} ]
+                       | [ " a[+Cmpl]" : {á} ]
+    				   | [ " pan[+Permissive]" : {pan} ]
+    				   ];
+    
+	define reference=all [ [ " taanan[+PSS]" : {taanan} ]
+						 | [ " taanan[+PSS]" : {tanan} ]
+						 ];
+    define past=event=intrans [ reference=all | [ " ax[+PSSS]" : {ax}] ];
+    define past=event=trans   [ reference=all | [ " xon[+PSSA]" : {xon}] | [ " ax[+PSSS]" : {ax}]];
+    ## ^ -ax: S aggr with MATRIX INTRANS verb, even if current is trans          ^^
+
+    define sim=event=all     [ " anan[+SSS]" : {anan}];
+    define sim=event=intrans [sim=event=all | [ " i[+SSSS]" : {i}] ];
+    define sim=event=trans   [sim=event=all | [ " kin[+SSSA]" : {kin}] ];
+
+    define following=event=intrans [ " nox[+FSSS]" : {nox} ];
+    define following=event=trans   [[ " nonxon[+FSSA]" : {noxon}] | [ " nonxon[+FSSA]" : {nonxon}] ];
+    
+    ## combining for same=subject
+    define ss=non=finite=trans   [participial | past=event=trans | sim=event=trans | following=event=trans];
+    define ss=non=finite=intrans [participial | past=event=intrans | sim=event=intrans | following=event=intrans];
+
+    define ss=trans [ ss=finite | ss=non=finite=trans];
+    define ss=intrans [ ss=finite | ss=non=finite=intrans];
+
+    ## Different subject
+    define ds=markers [ [ " ai[+SDS]" ] : {ai}
+    		  		  | [ " ke[+PDS]" ] : {ke}
+    		  		  | [ " ai[+S] tian[+DS]" ] : {aitian}
+    		  		  | [ " ai[+S] n[+DS]" ] : {ain}
+    		  		  | [ " ke[+P] tian[+DS]" ] : {ketian}
+    		  		  | [ " ke[+P] n[+DS]" ] : {ken}
+    		  		  | [ " nontian[+SDS]" ] : {nontian}
+    		  		  | [ " non[+FDS]" ] : {non}
+    		  		  | [ " a[+PO>S/A]" ] : {a}
+    		  		  ];
+    #  ^ last one encodes Object subject coreferentiality when dependent clause codes a previous event
+
+    # participle, aspectual nominalizer
+    define pp=suff [ [ " ai[+Pp1]" : {ai} ]
+                   | [ " a[+Pp2]" : {a} ]
+                   | [ " a[+Pp2]" : {á} ]
+                   ];
+
+    ###
+    # Infinitive suf
+    define infinitive=suf [" ti[+Inf]" : {ti}];
+
+    define final=trans   [ss=trans   | ds=markers | pp=suff | infinitive=suf ];
+    define final=intrans [ss=intrans | ds=markers | pp=suff | infinitive=suf ];
+
+    

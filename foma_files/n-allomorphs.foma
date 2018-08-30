@@ -1,0 +1,19 @@
+
+# deprecatory
+define dep=allm [ ["^DEP" -> {isi} || ~i _ ]
+                | ["^DEP" -> {osi} || i _ ]
+				];
+
+# interessive
+define int=allm [ "^INT" -> {n} || _ .#. ];
+
+# locale-ablative
+define loc=abl=allm [ "^LA" -> {kea}  || Vowels _, s h _ ];
+
+# ergative marker
+define erg=allm [ [ "^ERG" -> {an} || s _, s h _, x _ ]
+				| [ "^ERG" -> {en} || s _, s h _, x _ ]
+				| [ "^ERG" -> {in} || s _, s h _, x _ ]
+				| [ "^ERG" -> {man} || n _ ]
+				| [ "^ERG" -> {n} || [a|e|i|o|u] _ ]
+				];

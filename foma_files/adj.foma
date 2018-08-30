@@ -1,0 +1,74 @@
+
+####################################################################################
+
+                                    ##############
+                                    #            #
+                                    # ADJECTIVES #
+                                    #            #
+                                    ##############
+
+
+#################################################################################### 
+
+# requires verbs/nouns to be called before this one
+
+
+define neg=adj [ " ma[+Neg]" : {ma}];
+
+
+## Adjectivized NOUNS
+
+define n=adjz [NRoot prop=priv];
+
+
+## Adjectived VERBS
+
+# intransitive roots in the examples
+define VRootInt=adjtz [ [ "jo[VRoot.I]" : {jo} ]
+				      | [ "ka[VRoot.I]" : {ka} ]
+				  	  | [ "wini[VRoot.I]" : {wini} ]
+				  	  | [ "sina[VRoot.I]" : {sina} ]
+				  	  | [ "sina[VRoot.I]" : {siná} ]
+				  	  | [ "ransa[VRoot.I]" : {ransa} ]
+				  	  | [ "janso[VRoot.I]" : {janso} ]
+				  	  | [ "pi[VRoot.I]" : {pi} ]
+				  	  | [ "wini[VRoot.I]" : {wini} ]
+				  	  | [ "i[VRoot.I]" : {i} ]
+ 					];
+
+define adjz=v=suff [ [ " mis[+Agtz]" : {mis}]
+				   | [ " yosma[+Agtz]" : "^AGTZ" ]
+				   | [ " kas[+Agtz]" : {kas} ]
+];
+
+define adjz=allm [ ["^AGTZ" -> {yosma} || [a|e|o|u] _ ]
+				 | ["^AGTZ" -> {yosma} || Cons _ ]
+				 | ["^AGTZ" -> {osma} || i _ ]
+				 | ["^AGTZ" -> {isma} || [á|é|ó|ú] _ ]
+				];
+
+# past participal (verb up to slot 16/final::pp) -> adj
+
+define v=pp [ [trans=8 | intrans=8] (v=habitual) (plural) (tense) less=fixed=clitics^{0,2} (plural) (preventive) pp=suff ];
+
+define v=a=ss [ [VRootInt=adjtz | VRootTrans] adjz=v=suff ];
+
+
+# numerals have its own category
+
+# gather all cats
+define adj=suff [ neg=adj
+				| intens=verymuch
+				| [ " cha[+Adv]" : {cha} ]
+				];
+
+define adjectives [ ["[ADJ] " : 0] 
+					[ [adj=roots (neg=adj) (dim=depr) (adv=suff) (n=erg)]
+					  | n=adjz
+					  | v=a=ss
+					  | v=pp
+					  | adv=roots
+					] ([int=emphatic | int1=suff | int2=suff]) ]
+					.o. adjz=allm
+					.o. dep=allm .o. erg=allm
+					.o. malve=trans=allm .o. mid=allm; # .o. vowel=uncollapse;

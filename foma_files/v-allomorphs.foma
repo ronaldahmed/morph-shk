@@ -1,0 +1,19 @@
+## valence : malefactive
+define malve=trans=allm  [  "^MAL" -> {naan} || [a|e|i|o] _ ];
+
+## valence : middle marker
+
+# first case:  special case : (disyllabic) vroot + (immediately) middle marker +...
+define mid=allm [ [ "^MID" -> 0 || Vowels _ Cons ]
+                | [ "^MID" -> "meet" || n _ Vowels, n _ .#. ]
+                | [ "^MID" -> "mee"  || n _ Cons ]
+                | [ "^MID" -> "keet" || e _ Vowels, e _ .#. ]
+                | [ "^MID" -> "kee"  || e _ Cons ]
+                | [ "^MID" -> "kiit" || i _ Vowels, i _ .#. ]
+                | [ "^MID" -> "kii"  || i _ Cons   ]
+                | [ "^MID" -> "kaat" || a _ Vowels, a _ .#. ]
+                | [ "^MID" -> "kaa"  || a _ Cons   ]
+                | [ "^MID" -> "t"  || [a|e|o] _ ]
+                ];
+
+#define vowel=uncollapse [ "aai" (->) "ai" || Cons _ .#. ];

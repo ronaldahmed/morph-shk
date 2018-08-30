@@ -1,0 +1,153 @@
+
+####################################################################################
+
+                                    ##########
+                                    #        #
+                                    # VERBS  #
+                                    #        #
+                                    ##########
+
+
+
+#################################################################################### 
+
+    ##############################
+    #                            #
+    # MORPHOPHONOLOGICAL RULES   #
+    #                            #
+    ##############################
+
+    ### POS -1 : prefixes
+    # body part prefixes: Pref
+    source prefix.foma
+
+
+    ### POS 1 : plural
+    define plural [ [ " kan[+Pl]" : {kan} ]
+                  | [ " kan[+Pl] ananan[+Rec]" : {kanan} ]
+                  | [ " kan[+Pl] ni[+Rem]" : {kani} ]
+                  ];
+
+
+    ### POS 2-3 : Valence changing morphemes
+    source valence.foma
+
+    ### POS 3.5 : Interrogative Intensifier "shaman"
+    # sourced in common.foma
+
+    ### POS 4 : Desiderative
+    define desiderative=trans [" kas[+Des]" : {kas}];
+
+    ### POS 5 : Negative
+    define negative [ [ " yama[+Neg]" : {yama}] | [ " yama[+Neg]" : {ma}]];
+
+    ### POS 6,7,8 : Deictic_directive and adverb_type morphemes [slot ADV]
+    source v-adverbial.foma
+
+    ### POS 9 : Habitual [HAB]
+    define v=habitual [ " pao[+Hab]" : {pao}];
+
+    ### POS 11 : Tenses
+    source tenses.foma
+
+    ### POS 12,13 : Clitics (less fixed | 2nd pos)
+    # sourced in common.foma, in main file (analyser.foma)
+    
+    ### POS 15 : Preventive
+    define preventive [ " na[+Prev]" : {na}];
+
+    ### POS 16 : Final
+    source vfinal.foma
+
+    # POS 17 : 2nd pos clitics *(only seen in data, already imported from clitics.foma -pos12,13-)
+
+
+
+
+#################################################################################### 
+
+    ##############################
+    #                            #
+    # ROOT_MORPHEMES COMPOSITION #
+    #                            #
+    ##############################
+
+
+    ### Valence cases (trans2trans, intrans2trans, trans2intrans)
+    # -t[+Mid] can only be added to disyllabic transitive roots, not to derived/transitivized verbs
+
+    # to be used as root from pos 4 onwards (after valency change)
+    #define intranszed=val=bypass  [ Pref^{0,2} [VRootTrans & VRootDisyllabic] midMarker (valence=trans2intrans) ] .o. allm=realization;
+
+    define intranszed=val=bypass  [ Pref^{0,2} [VRootTrans & VRootDisyllabic] midMarker (valence=trans2intrans) ];
+
+
+    # groups vroot + pos 1-3
+    define intranszed=val=pl  [ Pref^{0,2} VRootTrans plural valence=trans2intrans^{1,2} ];
+    define intranszed=val=sg  [ Pref^{0,2} VRootTrans valence=trans2intrans^{1,2} ];
+
+    define transzed=val [ Pref^{0,2} VRootIntrans (plural) valence=intrans2trans^{1,2} ];
+
+    #   verbalized nouns (N -> V.trans)
+    define nverbalized [ NRoot [ [" n[+Caus]" : {n}]
+                                 aux=trans=suff ]
+                        ];
+
+    # N,Adj,Adv roots + ak.Aux -> V.t (N already considered ^)
+    define root=aux=vlzd [ [ part=roots
+                           | adj=roots
+                           | adv=roots ]
+                            aux=trans=suff ];
+
+    # up to slot 3
+    define intrans=3=sg [ intranszed=val=bypass
+                        | intranszed=val=sg
+                        | [ Pref^{0,2} VRootIntrans ]
+                        ];
+
+    #           intrans2intrans case non existent
+    define intrans=3=pl [ intranszed=val=pl
+                        | [ Pref^{0,2} VRootIntrans plural ]
+                        ];
+
+    define trans=3 [ transzed=val
+                   | nverbalized
+                   | root=aux=vlzd
+                   | [ Pref^{0,2} VRootTrans (plural) valence=trans2trans^{0,2} ]
+                   ];
+
+    ### Adverbials cases (sg,pl)
+    # up to slot 8:
+    define intrans=8=sg [ intrans=3=sg (int=emphatic) (negative) vadv=intrans=sg^{0,3} ];
+    define intrans=8=pl [ intrans=3=pl (int=emphatic) (negative) vadv=intrans=pl^{0,3} ];
+
+    define intrans=8 [ intrans=8=sg | intrans=8=pl ];
+    define trans=8 [ trans=3 (int=emphatic) (desiderative=trans) (negative) vadv=trans^{0,3} ];
+    
+    ###
+    # up to slot 17 + extra slot for general adverbs:
+    
+    define trans=final  [ trans=8   (v=habitual) (plural) (tense) less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) 
+                          final=trans   (negative) sec=pos=clitics^{0,3} ];
+    define intrans=final [intrans=8 (v=habitual) (plural) (tense) less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) 
+                          final=intrans (negative) sec=pos=clitics^{0,3} ];
+
+    # case when tense is obligatory but final is not
+    define trans=tense  [ trans=8   (v=habitual) (plural) tense less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) 
+                          (final=trans)   (negative) sec=pos=clitics^{0,3} ];
+    define intrans=tense [intrans=8 (v=habitual) (plural) tense less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) 
+                          (final=intrans) (negative) sec=pos=clitics^{0,3} ];
+
+
+    ## early termination for Indefinite Future V-nonx iki
+    define trans=indf=fut [trans=8 (v=habitual) (plural) indef=fut=pv];
+    define intrans=indf=fut [intrans=8 (v=habitual) (plural) indef=fut=pv];
+
+    # last update: indefinite future / raw stem (for deduplication)
+    define verb=complete [ ["[VERB] " : 0]
+                           [ trans=final | intrans=final 
+                           | trans=tense | intrans=tense
+                           | trans=indf=fut | intrans=indf=fut
+                           | VRootTrans | VRootIntrans]
+                         ]
+                         .o. malve=trans=allm .o. mid=allm; # .o. vowel=uncollapse;

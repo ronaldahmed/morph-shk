@@ -1,0 +1,48 @@
+# Spanish nouns found in corpus
+
+define NRootESraw [
+ [ {europa} "[NRootES]" ] : {europa}
+| [ {martín} "[NRootES]" ] : {martín}
+| [ {amén} "[NRootES]" ] : {amén}
+| [ {brújula} "[NRootES]" ] : {brújula}
+| [ {cápac} "[NRootES]" ] : {cápac}
+| [ {avión} "[NRootES]" ] : {avión}
+| [ {teniente} "[NRootES]" ] : {teniente}
+| [ {argentina} "[NRootES]" ] : {argentina}
+| [ {españa} "[NRootES]" ] : {españa}
+| [ {rayos} "[NRootES]" ] : {rayos}
+| [ {lima} "[NRootES]" ] : {lima}
+| [ {presidente} "[NRootES]" ] : {presidente}
+| [ {petroleo} "[NRootES]" ] : {petroleo}
+| [ {maquina} "[NRootES]" ] : {maquina}
+| [ {vicuña} "[NRootES]" ] : {vicuña}
+| [ {gasolina} "[NRootES]" ] : {gasolina}
+| [ {vespucio} "[NRootES]" ] : {vespucio}
+| [ {inca} "[NRootES]" ] : {inca}
+| [ {octubre} "[NRootES]" ] : {octubre}
+| [ {inka} "[NRootES]" ] : {inka}
+| [ {ecuadoro} "[NRootES]" ] : {ecuadoro}
+| [ {australasia} "[NRootES]" ] : {australasia}
+| [ {américa} "[NRootES]" ] : {américa}
+| [ {nacional} "[NRootES]" ] : {nacional}
+| [ {vapor} "[NRootES]" ] : {vapor}
+| [ {papá} "[NRootES]" ] : {papá}
+| [ {capac} "[NRootES]" ] : {capac}
+| [ {semana} "[NRootES]" ] : {semana}
+| [ {jóse} "[NRootES]" ] : {jóse}
+| [ {máquina} "[NRootES]" ] : {máquina}
+| [ {perú} "[NRootES]" ] : {perú}
+| [ {africa} "[NRootES]" ] : {africa}
+| [ {número} "[NRootES]" ] : {número}
+| [ {trampa} "[NRootES]" ] : {trampa}
+| [ {india} "[NRootES]" ] : {india}
+| [ {agosto} "[NRootES]" ] : {agosto}
+| [ {limon} "[NRootES]" ] : {limon}
+| [ {martin} "[NRootES]" ] : {martin}
+| [ {español} "[NRootES]" ] : {español}
+| [ {escuela} "[NRootES]" ] : {escuela}
+| [ {peruano} "[NRootES]" ] : {peruano}
+| [ {castellano} "[NRootES]" ] : {castellano}
+| [ {cuaderno} "[NRootES]" ] : {cuaderno}
+| [ {quinua} "[NRootES]" ] : {quinua}
+] ;

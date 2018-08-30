@@ -1,0 +1,27 @@
+# numerals 
+
+define num=card [
+ [ {westíora} "[NUMRoot.C]" ] :   {westíora}
+| [ {westíora} "[NUMRoot.C]" ] :   {westiora}
+| [ {rabé} "[NUMRoot.C]" ] :   {rabé}
+| [ {rabé} "[NUMRoot.C]" ] :   {rabe}
+| [ {kimsa} "[NUMRoot.C]" ] :   {kimsa}
+| [ {kimsa} "[NUMRoot.C]" ] :   {kimisha}
+| [ {tawa} "[NUMRoot.C]" ] :   {tawa}
+| [ {tawa} "[NUMRoot.C]" ] :   {chosko}
+| [ {pichqa} "[NUMRoot.C]" ] :   {pichqa}
+| [ {pichqa} "[NUMRoot.C]" ] :   {pichika}
+| [ {suqta} "[NUMRoot.C]" ] :   {suqta}
+| [ {suqta} "[NUMRoot.C]" ] :   {sokota}
+| [ {qanchis} "[NUMRoot.C]" ] :   {qanchis}
+| [ {qanchis} "[NUMRoot.C]" ] :   {kanchis}
+| [ {pusaq} "[NUMRoot.C]" ] :   {pusaq}
+| [ {pusaq} "[NUMRoot.C]" ] :   {posaka}
+| [ {isqun} "[NUMRoot.C]" ] :   {isqun}
+| [ {isqun} "[NUMRoot.C]" ] :   {iskon}
+| [ {chunka} "[NUMRoot.C]" ] :   {chunka}
+| [ {chunka} "[NUMRoot.C]" ] :   {chonka}
+| [ {pachak} "[NUMRoot.C]" ] :   {pachak}
+| [ {waranqa} "[NUMRoot.C]" ] :   {waranqa}
+| [[ "root[NUMRoot.C]"] : {root}]
+] ;

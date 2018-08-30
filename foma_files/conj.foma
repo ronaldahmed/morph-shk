@@ -1,0 +1,41 @@
+## Conjunctions
+
+# CCONJ
+define pa=suff [ s=agr=suff | a=agr=suff ];
+
+define cconj  [ ["[CCONJ] " : 0]
+				[ [ "betan[CCONJRoot]" : {betan} ]
+				| [ "itan[CCONJRoot]" : {itan} ]
+				| [[ "iama[CCONJRoot]" : {iama} ] (pa=suff)]
+				] (adv=suff)
+];
+
+define sconj=root [ [ "ja[SCONJRoot]" : {ja}]
+				  | [ "ja[SCONJRoot]" : {j}]
+				  | [ "jain[SCONJRoot]" : {jain}]
+];
+
+define similitive [ [" ska[+Siml]" : {skat} ]
+				  | [" ska[+Siml]" : {ská} ]
+				  | [" ska[+Siml]" : {ská} ]
+];
+
+define dd=tian [ " tian[+Dd]" : {tian} ];
+define p=ke [ " ke[+P]" : {ke} ];
+
+define sconj=clitics [ p=ke | dd=tian | sec=pos=clitics | declarative | participial];
+
+
+define frozen=suff [ [ " ra[+Ra]" : {ra} ] | [ " ra[+Ra]" : {r} ]  ];
+
+# slots: 1(sim), 2(frozen), 3(loc=abl), 4(part agr), 5(clitics)
+#  1st line: ambiguous: depends on discourse structure
+define sconj=suff=conf [ [temporal | dd=tian]
+					   | [ sconj=clitics^{1,3} ]
+					   | [ loc=abl sconj=clitics^{0,3} ]
+					   | [ pa=suff sconj=clitics^{0,3} ]
+					   | [ loc=abl pa=suff sconj=clitics^{0,3} ]
+];
+
+
+define sconj [ ["[SCONJ] " : 0] [ sconj=root (similitive) (frozen=suff) sconj=suff=conf ] ] .o. loc=abl=allm;

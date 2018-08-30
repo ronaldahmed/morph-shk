@@ -1,0 +1,76 @@
+## Determiners ( Det, WDT, )
+
+# WDT: content questions
+
+define int=who [ "tso[PRONRoot.Int]" : {tso}];
+define int=what [ "jawe[PRONRoot.Int]" : {jawe}];
+define int=what=abs [ "jawe[PRONRoot.Int] -[+Abs]" : {jawe}];
+define int=where [ [ "jaono[PRONRoot.Int]" : {jaono} ] |
+                   [ "jawerano[PRONRoot.Int]" : {jawerano} ]
+                 ];
+define int=where=abl [ [ "jaono[PRONRoot.Int] -[+Abl]" : {jaono} ] |
+                       [ "jawerano[PRONRoot.Int] -[+Abl]" : {jawerano} ]
+                     ];
+
+define whose=gen [int=who gen=suff ([pron=nmlzer int2=suff]) ];
+
+define who=cases  [ whose=gen | [ int=who [ erg=suff | abs=suff | com=suff | chezative] ] ];
+
+define what=cases [ [ [int=what=abs | int=what] ([temporal | int2=suff]) ] |
+                    [int=what [erg=suff | [instr=suff int1=suff] ] ]
+                  ];
+#  ^ last case inst -> (in what) WHPP
+
+define where=cases [ [ int=where ([a=aggr=suff | [abl=suff s=agr=suff] ]) ]
+				   | [ int=where=abl (o=aggr=suff)]
+				   ];
+
+
+define cont=int [ [who=cases | what=cases | where=cases | why=case] ([n=plural | n=pl=erg ]) ];
+
+define int=clitics [ int=emphatic | emp=suff | evidential=clit | int1=suff | int2=suff];
+
+# second words in intg. collocations
+
+define int=how  [ [ "keská[ADPRoot]" : {keská} ]
+				 | [ "keská[ADPRoot]" : {keskat} ]
+				 | [ "jawekeska[PRONRoot.Int]" : {jawekeska} ]
+				 | [ "jawekeska[PRONRoot.Int]" : {jawekeská} ]
+				 | [ "jawekeskat[PRONRoot.Int]" : {jawekeskat} ]
+				 ];
+
+define how=cases [ int=how ([s=agr=suff | a=agr=suff]) ];
+
+## WHADJP
+define int=how=much=many [ "jaweti[PRONRoot.Int]" : {jaweti} ];
+define int=which [ "jawerato[PRONRoot.Int]" : {jawerato} ];
+
+define int=collocations [ [ "kopí[ADPRoot]" : {kopí} ] 
+						| how=cases
+						| int=how=much=many
+						| int=which
+						];
+
+define interrogatives [ ["[PRON] " : 0] [cont=int | int=collocations] ([n=plural | n=pl=erg ]) (int=clitics) ];
+
+
+## DEMOMNSTRATIVES
+# Demonstratives  as determiners (noun modifiers)
+
+define dem=prox1 [ "nato[DEMRoot]" : {ne} ];
+define dem=prox2 [ "nato[DEMRoot]" : {nato}];
+define dem=prox [ dem=prox1 | dem=prox2];
+
+
+define dem=med [ ["ja[DEMRoot]" : {ja} ]
+			   | ["jain[DEMRoot]" : {jain} ]
+			   | ["jao[DEMRoot]" : {jao} ]
+			   ];
+
+define dem=dist1 [ "oa[DEMRoot]" : {oa} ];
+define dem=dist2 [ "oa[DEMRoot]" : {o} ];
+define dem=dist [ dem=dist1 | dem=dist2 ];
+
+
+define determiners [ ["[DET] " : 0] [dem=prox | dem=med | dem=dist] ([n=plural | n=pl=erg ]) ];
+

@@ -1,0 +1,57 @@
+### POS 6 : Deictic_directive and adverb_type morphemes [slot ADV]
+
+    ## Deictive_directive : going up/down, coming, going towards
+
+    define deictive=directive=all [ [ " " {inat} "[+Adv]" ] : {inat}
+                                  | [ " " {inat} "[+Adv]" ] : {ina}
+                                  | [ " " {kawan} "[+Adv]" ] : {kawan} ];
+
+    define deictiveDirectiveTrans    [ [[ " " {pake} "[+Distr]" ] : {pake} ]
+                                     | [[ " " {be} "[+Adv]" ] : {be} ]
+                                     | [[ " " {bo} "[+Adv]" ] : {bo} ]
+                                     | deictive=directive=all
+                                     ];
+                                     
+    define deictive=directive=intrans [ [[ " " {paket} "[+Adv]" ] : {paket}] | deictive=directive=all ];
+
+
+    # Venitives
+    #   single=intransitive | plural=intransitive
+    define venitive=intrans=sg [ " " {kiran} "[+Ven1]" ] : {kiran};
+    define venitive=intrans=pl [ " " {beiran} "[+Ven2]" ] : {beiran};
+
+    #   single & plural transitive
+    define venitive=trans [[ " " {beiran} "[+Ven2]" ] : {beiran} ];
+    
+    # Andantives
+    #   single=intransitive | plural=intransitive
+    define andative=intrans=sg [[ " " {kain} "[+And1]" ] : {kain}];
+    define andative=intrans=pl [[ " " {bain} "[+And2]" ] : {bein}];
+
+    #   single & plural transitive
+    define andative=trans [[ " " {bain} "[+And2]" ] : {bain}];
+
+
+    ## Adverb_type
+
+    define vadv=general  [ [ " " {tan} "[+Adv]" ] : {tan}
+                         | [ " " {toshit} "[+Adv]" ] : {toshit}
+                         | [ " " {toshit} "[+Adv]" ] : {toshi}
+                         | [ " " {bait} "[+Adv]" ] : {bait}
+                         | [ " " {shin} "[+Adv]" ] : {shin}
+                         | [ " " {bekon} "[+Dual]" ] : {bekon}
+                         | [ " " {yon} "[+Adv]" ] : {yon}
+                         | [ " " {patan} "[+Adv]" ] : {patan}
+                         | [ " " {kean} "[+Adv]" ] : {kean}
+                         | [ " " {men} "[+Adv]" ] : {men}
+                         | [ " " {wetsayama} "[+Adv]" ] : {wetsayama}
+                         | [ " " {xonki} "[+Adv]" ] : {xonki}
+                         | [ " bira[+Adv]" : {bira} ]
+                         ];
+    
+    ### combining all types
+
+    define vadv=trans [ deictiveDirectiveTrans | venitive=trans | andative=trans | vadv=general ];
+
+    define vadv=intrans=sg [ deictive=directive=intrans | venitive=intrans=sg | andative=intrans=sg | vadv=general ];
+    define vadv=intrans=pl [ deictive=directive=intrans | venitive=intrans=pl | andative=intrans=pl | vadv=general ];

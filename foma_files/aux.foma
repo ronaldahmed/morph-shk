@@ -1,0 +1,67 @@
+
+####################################################################################
+
+                                    ##############
+                                    #            #
+                                    # AUX VERBS  #
+                                    #            #
+                                    ##############
+
+
+#################################################################################### 
+
+## sole particle iki
+define aux=iki [ (["ra[Ev+] " : {r}]) [ "iki[AUXRoot]" : {iki} ]];
+
+## answers to polar questions
+
+define pol=qst=ans=aux [ [ "ik[AUXRoot] í[+SSSS]" : {ikí} ] 
+					   | [ "ik[AUXRoot] á[+Pp2] ma[+Neg]" : {ikáma} ]
+					   | [ "ak[AUXRoot] kin[+SSSA]" : {akin} ]
+					   | [ "ak[AUXRoot] á[+Pp2] ma[+Neg]" : {akáma} ]
+					];
+
+
+# transitive root
+define ak=root [[ "ak[AUXRoot]" : {a} ] | [ "ak[AUXRoot]" : {ak} ]];
+
+# intransitive root
+define ik=root [[ "ik[AUXRoot]" : {i} ] | [ "ik[AUXRoot]" : {ik} ]];
+
+# ditransitive roots
+define modal=v=root [ ["atipan[AUXRoot]" : {atipan}]
+					| ["ja[AUXRoot]" : {ja}]
+					| ["yama[AUXRoot]" : {yama}]
+];
+
+## when syntactically separated, same mtactics as VERB (+Periphrastic verbs)
+
+def trans=aux [ [ak=root | modal=v=root] (plural) valence=trans2trans^{0,2} (int=emphatic) (desiderative=trans) (negative) vadv=trans^{0,3} (v=habitual) (plural) (tense) less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) final=trans (sec=pos=clitics)];
+
+def intrans=aux [ [ik=root | modal=v=root] (plural) (int=emphatic) (negative) [vadv=intrans=sg^{0,3} | vadv=intrans=pl^{0,3}] (v=habitual) (plural) (tense) less=fixed=clitics^{0,2} (plural) (preventive) (int1=suff) final=intrans (sec=pos=clitics) ];
+
+
+## Same/Diff-Subject Marked Periphrastic Verbs
+
+define ss=mrk [" ai[+Inc]" : {ai}];
+
+define ds=mrk [ [" ai[+S] tian[+DS]" : {aitian}] | [" ai[+S] n[+DS]" : {ain}] ];
+
+define pv=subjaggr=progr=aux [ ik=root [" t[+Prog]" : {t}] [ss=mrk | ds=mrk] ];
+
+
+## Future kai
+
+define fut=go=aux [ [["ka[AUXRoot]" : {k}] | ["ka[AUXRoot]" : {ka}]] ss=mrk ];
+
+
+define auxiliar [ ["[AUX] " : 0]
+				  [ aux=iki
+				  | pol=qst=ans=aux
+				  | trans=aux
+				  | intrans=aux
+				  | pv=subjaggr=progr=aux
+				  | fut=go=aux
+				  ]
+				]
+				.o. malve=trans=allm .o. mid=allm; # .o. vowel=uncollapse;

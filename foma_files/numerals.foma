@@ -1,0 +1,37 @@
+
+####################################################################################
+
+                                    ##############
+                                    #            #
+                                    # NUMERALS   #
+                                    #            #
+                                    ##############
+
+
+#################################################################################### 
+
+# cardinals defined as in num=card
+# digits
+
+#define digits [1|2|3|4|5|6|7|8|9|%0];
+#define num=dgt  [[ digits+ "[NUMRoot.C]"] : {digits+}];
+
+
+# Ordinal numbers
+define num=ord [
+	  [ "reken[NUMRoot.O]" :  {reken} ]
+	| [ "chiní[NUMRoot.O]" :  {chiní} ]
+];
+
+# Quantifiers
+define num=quant [
+	  [ "jatíbiri[NUMRoot.Q]" :  {jatibiri} ]
+	| [ "jatíbiri[NUMRoot.Q]" :  {jatíbiri} ]
+	| [ "jatíbiri[NUMRoot.Q]" :  {jatíbi} ]
+	| [ "jatíbiri[NUMRoot.Q]" :  {jatibi} ]
+	| [ "jatíribi[NUMRoot.Q]" :  {jatíribi} ]
+	| [ "jatíribi[NUMRoot.Q]" :  {jatiribi} ]
+	| [ "icha[NUMRoot.Q]" :  {icha} ]
+];
+
+define numerals [ [ "[NUM] " : 0 ] [num=card | num=ord | num=quant] ];

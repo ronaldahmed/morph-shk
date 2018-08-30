@@ -1,0 +1,14 @@
+# Particle roots
+
+define part=roots [
+ [ "joo[PARTRoot]" : {joo} ]
+| [ "saí[PARTRoot]" : {saí} ]
+| [ "tan[PARTRoot]" : {tan} ]
+| [ "tes[PARTRoot]" : {tes} ]
+| [ "to[PARTRoot]" : {to} ]
+| [ "too[PARTRoot]" : {too} ]
+| [ "tíi[PARTRoot]" : {tíi} ]
+| [ "xoon[PARTRoot]" : {xoon} ]
+| [ "yoyo[PARTRoot]" : {yoyo} ]
+| [ "root[PARTRoot]" : {root} ]
+] ;

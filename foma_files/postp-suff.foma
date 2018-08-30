@@ -1,0 +1,28 @@
+# Post-position suffixes
+
+define postpos=suff [
+ [ " napo[+Adp]" : {napo} ]
+| [ " kexá[+Adp]" : {kexá} ]
+| [ " kexa[+Adp]" : {kexa} ]
+| [ " pekáo[+Adp]" : {pekáo} ]
+| [ " pekao[+Adp]" : {pekao} ]
+| [ " chichó[+Adp]" : {chichó} ]
+| [ " chicho[+Adp]" : {chicho} ]
+| [ " bochiki[+Adp]" : {bochiki} ]
+| [ " bebon[+Adp]" : {bebon} ]
+| [ " bebí[+Adp]" : {bebí} ]
+| [ " bebi[+Adp]" : {bebi} ]
+| [ " manaon[+Adp]" : {manaon} ]
+| [ " naman[+Adp]" : {naman} ]
+| [ " napon[+Adp]" : {napon} ]
+| [ " meran[+Adp]" : {meran} ]
+| [ " patax[+Adp]" : {patax} ]
+| [ " betan[+Adp]" : {betan} ]
+| [ " kaman[+Adp]" : {kaman} ]
+| [ " keská[+Adp]" : {keská} ]
+| [ " keska[+Adp]" : {keska} ]
+| [ " kopí[+Adp]" : {kopí} ]
+| [ " kopi[+Adp]" : {kopi} ]
+| [ " xaran[+Adp]" : {xaran} ]
+| [ " paranan[+Adp]" : {paranan} ]
+] ;

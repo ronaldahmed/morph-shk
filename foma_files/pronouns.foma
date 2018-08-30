@@ -1,0 +1,135 @@
+    ######################
+    #                    #
+    # PRONOUNS           #
+    #                    #
+    ######################
+
+    source postp-suff.foma
+    
+    define pron=root=1sg [ "e[1.Sg]" : {e}];
+    define pron=root=1pl [ "no[1.Pl]" : {no} ];
+    define pron=root=2sg [ "mi[2.Sg]" : {mi}];
+    define pron=root=2pl [ "mato[2.Pl]" : {mato}];
+    define pron=root=3sg [ "ja[3.Sg]" : {ja}];
+    define pron=root=3pl [ ["jato[3.Pl]" : {jato}] | ["jabo[3.Pl]" : {jabo}] ];
+    define pron=root=3pl=erg [ ["jabaon[3.Pl]" : {jabaon}] 
+                             | ["jabaon[3.Pl]" : {jaboan}]
+                             | ["jabaon[3.Pl]" : {jaboon}]
+                             ];
+
+
+    ## Personal pronouns
+
+    
+    define pron=1 [ [ pron=root=1sg | pron=root=1pl ] ([ abs=suff | erg=suff ]) ];
+    define pron=2 [ [ pron=root=2sg | pron=root=2pl ] ([ abs=suff | erg=suff ]) ];
+
+    define pron=3 [ [pron=root=3sg (erg=suff)]
+                  | pron=root=3pl
+                  | pron=root=3pl=erg
+                  ];
+
+    define pron=gen   [ [ "nokon[Pos1]" : {nokon} ]
+                      | [ "jawen[Pos3]" : {jawen} ]
+                      | [[ pron=root=1pl | pron=root=2sg | pron=root=2pl ] gen=suff ]
+                      ];
+
+    define pron=intrss [ [ pron=root=2pl [" n[+Intrss]" : {n}] ]
+                       | [[ pron=root=1sg | pron=root=1pl | pron=root=2sg | pron=root=3sg ] intrss=suff ]
+                       ];
+
+    define pron=cases [ dative | chezative | com=suff | l=a=s | loc=alone ];
+    
+    define personal=pron [ [ pron=1 | pron=2 | pron=3 | [ pron=gen (pron=nmlzer) ] | pron=intrss ] 
+                           pron=cases^{0,2}
+                         ];
+    
+
+    ## Emphatic pronouns
+    # s=agr=suff defined in nouns.foma
+    define nom=suff [ " n[+Nom]" : {n} ];
+    define ep=fst=form [ [pron=root=1sg | 
+                             pron=root=1pl | 
+                             pron=root=2sg | 
+                             pron=root=3sg] nom=suff emp=suff ];
+    define ep=sec=form [ [ [[pron=root=2pl | pron=root=3pl] nom=suff emp=suff ] |
+                           [pron=root=3pl=erg emp=suff] ]
+                         ([ " ni[+Lig]" : {ni}]) ];
+
+    
+
+
+    define ep=s=a [ [ep=fst=form | ep=sec=form] (s=agr=suff)];
+
+    define ep=s=o [ [ [[pron=root=1sg |
+                        pron=root=1pl |
+                        pron=root=2sg |
+                        pron=root=2pl |
+                        pron=root=3pl ] [ " a[+Acc]" : {a}] ] |
+                      [ "ja[3.Sg:Acc]" : {ja} ]
+                    ] emp=suff
+                  ];
+
+
+    define emphatic=pron [ ep=s=a | ep=s=o ];
+
+    ## Other pronominal forms (6.1.4): Dative, chezative, +postposition
+
+    # dative & chezative : defined in nouns.foma
+    # comitative: short form of /betan/ ("with")
+    define com=suff [ " bé[+Com]" : {bé}];
+
+    ##
+    define pron=roots=all [pron=root=1sg |
+                           pron=root=1pl |
+                           pron=root=2sg |
+                           pron=root=2pl |
+                           pron=root=3sg |
+                           pron=root=3pl ];
+
+    define pron=roots=all=abs [ [[pron=root=1sg |
+                                 pron=root=1pl |
+                                 pron=root=2sg ] abs=suff] |
+                                [pron=root=3sg |
+                                 pron=root=3pl |
+                                 pron=root=2pl]
+                              ];
+
+    define pron=dat=chez=com [ pron=roots=all [dative | chezative | com=suff] ];
+
+    # pron+postposition
+    define pron=postp [ pron=roots=all postpos=suff ];
+
+    
+    ## Interrogative pronouns
+
+    # polar questions 
+    define polar=pron  [ pron=roots=all=abs int1=suff ];
+
+
+    # leading questions
+    define lead=suff [ " tsi[+Lead]" : {tsi} ];
+
+    define pron=lead [ [pron=roots=all=abs | who=cases | what=cases | where=cases ]
+                        lead=suff (int1=suff) ];
+
+    
+    # demonstratives as pronouns
+    define pron=dem [ [dem=prox | dem=med | dem=dist] (n=plural)
+                      ([erg=suff | dative | chezative | com=suff ]) ];
+
+
+    ## join all pronoun types
+    # evidential clitic defined in clitcs.foma, imported in common.foma
+
+    define pronouns [ [ "[PRON] " : 0 ] 
+                      [ [[ [ personal=pron (spec=clitic)]
+                           | emphatic=pron
+                           | pron=dat=chez=com
+                           | pron=dem
+                           | pron=postp
+                         ] (evidential=clit)]
+                      | polar=pron
+                      | pron=lead
+                      ]
+                    ];

@@ -1,0 +1,16 @@
+### POS 11 : Tenses
+    define tense [ [ " " {yat} "[+Fut]" ] : {yat}
+                 | [ " " {yat} "[+Fut]" ] : {yá}
+                 | [ " " {yat} "[+Fut]" ] : {ya}
+                 | indef=fut=pv
+                 | [ " " {wan} "[+Pst1]" ] : {wan}
+                 | [ " " {ibat} "[+Pst2]" ] : {ibat}
+                 | [ " " {ibat} "[+Pst2]" ] : {ibá}
+                 | [ " " {ibat} "[+Pst2]" ] : {iba}
+                 | [ " " {yantan} "[+Pst3]" ] : {yantan}
+                 | [ " " {rabe} "[+Pst3.Imperfect]" ] : {rabe}
+                 | [ " " {katit} "[+Pst4]" ] : {katit}
+                 | [ " " {katit} "[+Pst4]" ] : {kati}
+                 | [ " " {katit} "[+Pst4]" ] : {káti}
+                 | [ " " {ni} "[+Rem]" ] : {ni}
+                 ];

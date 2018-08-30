@@ -1,0 +1,29 @@
+### POS 12,13 : Clitics
+
+def adv=suff [ [ " ribi[+Adv]" : {ribi} ]
+             | [ " ribi[+Adv]" : {riba} ]
+             | [ " pacho[+Adv]" : {pacho} ]
+             | [ " res[+Adv]" : {res} ]
+             | [ " bicho[+Adv]" : {bicho} ]
+             | [ " bires[+Adv]" : {bires} ]
+             | [ " bira[+Adv]" : {bira} ]
+];
+  
+define less=fixed=clitics [ adv=suff
+                          | intens=verymuch
+                          | int=emphatic
+                          | [ " tani[+Att]" ] : {tani}
+                          | dim=depr
+                          ];
+
+
+define sec=pos=clitics [ less=fixed=clitics
+                       | evidential=clit
+                       | contrastive=clit
+                       | hsy1=clit
+                       | " ki[+Hsy]" : {ki}
+                       | spec=clitic
+                       | int1=suff
+                       | int2=suff
+                       | emp=suff
+                       ];

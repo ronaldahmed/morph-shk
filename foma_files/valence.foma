@@ -1,0 +1,48 @@
+### POS 2-3 : Valence changing morphemes
+    ## Causitivation (+1)
+    # for any verb
+    define causitivizer=all [ " ma[+Caus]" : {ma}];
+
+    # restricted to intransitive verbs
+    define causitivizer=intrans=only [ " n[+Caus]" : {n}];
+
+    # restricted to transitive verbs
+    define causitivizer=trans=only [ " a[+Caus]" : {a}];
+
+    define causitivizer=trans [ causitivizer=all | causitivizer=trans=only ];
+    define causitivizer=intrans [ causitivizer=all | causitivizer=intrans=only ];
+
+    # applicatives (+1)
+    define benefactive [ " xon[+Ben]" : {xon}];
+    define associative [ [ " kin[+Assoc]" : {kin} ]
+                       | [ " kiin[+Assoc]" : {kiin} ]
+                       ];
+
+    define malefactive=trans [ [ " naan[+Mal]" : "^MAL" ]
+                             | [ " naan[+Mal]" : {anan} ]
+                             | [ " naan[+Mal]" : {ananan} ]
+                             | [ " naan[+Mal]" : {nan} ]
+                             ];
+
+    define malefactive=intrans [ " xon[+Mal]" : {xon}];
+    
+    define applicative=trans   [benefactive | associative | malefactive=trans];
+    define applicative=intrans [benefactive | associative | malefactive=intrans];
+
+
+    # middle marker -t (->I) : General case
+    define midMarker [ " t[+Mid]" : "^MID"];
+
+    ## Reciprocal (->I)
+    define reciprocal [ [ " ananan[+Rec]" : {ananan} ]
+                      | [ " ananan[+Rec]" : {anan} ]
+                      | [ " ananan[+Rec]" : {nan} ]
+                      ];
+
+
+    ### combine all Valence cases
+
+    define valence=trans2trans [causitivizer=trans | applicative=trans];
+    define valence=intrans2trans [causitivizer=intrans | applicative=intrans];
+    define valence=trans2intrans [reciprocal | midMarker];
+    

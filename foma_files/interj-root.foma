@@ -1,0 +1,20 @@
+# Interjection roots
+
+define intj=roots [
+ [ "jenjen[INTJRoot]" : {jenjen} ]
+| [ "jojo[INTJRoot]" : {jojo} ]
+| [ "eeri[INTJRoot]" : {eeri} ]
+| [ "eri[INTJRoot]" : {eri} ]
+| [ "arí[INTJRoot]" : {arí} ]
+| [ "ayáoo[INTJRoot]" : {ayáoo} ]
+| [ "shii[INTJRoot]" : {shii} ]
+| [ "jii[INTJRoot]" : {jii} ]
+| [ "jass[INTJRoot]" : {jass} ]
+| [ "choon[INTJRoot]" : {choon} ]
+| [ "ojojói[INTJRoot]" : {ojojói} ]
+| [ "atashái[INTJRoot]" : {atashái} ]
+| [ "chuu[INTJRoot]" : {chuu} ]
+| [ "pucha[INTJRoot]" : {pucha} ]
+| [ "pues[INTJRoot]" : {pues} ]
+| [ "root[INTJRoot]" : {root} ]
+] ;
