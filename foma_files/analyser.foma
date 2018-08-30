@@ -276,4 +276,4 @@ regex [
       ]
       ;
 
-save stack analyser_sk.fst
+save stack morph_shk.fst
