@@ -2,7 +2,7 @@
 
 Shipibo-Konibo (SK) is a native language mainly spoken in the Amazonian regions of Pery by nearly 30,000 people.
 This repository contains a morphological analyzer for this language.
-Tha analyzer is a FST that produces all posible segmentations and tagging sequences in a word-by-word fashion.
+The analyzer is a FST that produces all possible segmentations and tagging sequences in a word-by-word fashion.
 
 
 ## Requirements
