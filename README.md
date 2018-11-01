@@ -25,6 +25,13 @@ cat sample-input.txt | flookup morph_shk.fst
 
 ## Cite us
 
-If you use this tool, please consider citing the following papers
+If you use this tool, please consider citing the following paper
 
 
+@inproceedings{cardenas2018morphological,
+  title={A Morphological Analyzer for Shipibo-Konibo},
+  author={Cardenas, Ronald and Zeman, Daniel},
+  booktitle={Proceedings of the Fifteenth Workshop on Computational Research in Phonetics, Phonology, and Morphology},
+  pages={131--139},
+  year={2018}
+}
